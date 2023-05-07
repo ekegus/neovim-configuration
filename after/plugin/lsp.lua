@@ -18,13 +18,16 @@ local lsp_attach = function(client, bufnr)
 	vim.keymap.set("n", "<leader>rn", function () vim.lsp.buf.rename() end, opts)
 	vim.keymap.set('n', '<leader>sh', vim.lsp.buf.signature_help, opts)
 
-	vim.keymap.set("n", "<leader>vd", function () vim.diagnostic.open_float() end, opts)
+	vim.keymap.set("n", "<leader>df", function () vim.diagnostic.open_float() end, opts)
 
 	vim.keymap.set('n', '<leader>da', vim.lsp.buf.add_workspace_folder, opts)
 	vim.keymap.set('n', '<leader>dr', vim.lsp.buf.remove_workspace_folder, opts)
 	vim.keymap.set('n', '<leader>dl', function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, opts)
+  vim.keymap.set('n', '<leader>fo', function()
+      vim.lsp.buf.format { async = true }
+  end, opts)
 end
 
 local lspconfig = require('lspconfig')
