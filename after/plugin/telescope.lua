@@ -13,6 +13,8 @@ telescope.setup({
 	},
 })
 
+require("telescope").load_extension("ui-select")
+
 -- local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<leader><leader>", ":Telescope<CR>", {})
