@@ -11,8 +11,31 @@ telescope.setup({
 			n = { ["<c-t>"] = trouble.open_with_trouble },
 		},
 	},
+	pickers = {
+		find_files = {
+			theme = "dropdown",
+		},
+		live_grep = {
+			theme = "dropdown",
+		},
+		git_status = {
+			theme = "dropdown",
+		},
+		diagnostics = {
+			theme = "dropdown",
+		},
+		lsp_document_symbols = {
+			theme = "dropdown",
+		},
+	},
+	extensions = {
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown({}),
+		},
+	},
 })
 
+-- https://github.com/nvim-telescope/telescope-ui-select.nvim
 require("telescope").load_extension("ui-select")
 
 -- local opts = { noremap = true, silent = true }
@@ -33,7 +56,7 @@ vim.keymap.set("n", "<leader>cb", builtin.current_buffer_fuzzy_find, {})
 
 -- -- LSP Pickers
 vim.keymap.set("n", "gr", builtin.lsp_references, {})
-vim.keymap.set("n", "<leader>di", builtin.diagnostics, {})
+-- vim.keymap.set("n", "<leader>di", builtin.diagnostics, {})
 vim.keymap.set("n", "<leader>di", function()
 	return builtin.diagnostics({ bufnr = 0 })
 end, {})
