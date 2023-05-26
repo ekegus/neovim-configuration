@@ -1,3 +1,5 @@
+local vim = vim
+
 local ensure_packer = function()
 	local fn = vim.fn
 	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -50,6 +52,25 @@ return require("packer").startup(function(use)
 	use({ "mhartington/formatter.nvim" })
 
 	use({ "mfussenegger/nvim-lint" })
+
+	use({ "lewis6991/gitsigns.nvim" })
+
+	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
+
+	use({ "github/copilot.vim" })
+
+	use({ "mbbill/undotree" })
+
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+
+	use({
+		"ggandor/leap.nvim",
+		config = function()
+			require("leap").setup({})
+		end,
+	})
+
+	use({ "echasnovski/mini.pairs", branch = "stable" })
 
 	if packer_bootstrap then
 		require("packer").sync()
