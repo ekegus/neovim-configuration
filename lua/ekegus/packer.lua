@@ -60,7 +60,7 @@ return require("packer").startup(function(use)
 
 	use({ "github/copilot.vim" })
 
-	use({ "mbbill/undotree" })
+	-- use({ "mbbill/undotree" })
 
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 

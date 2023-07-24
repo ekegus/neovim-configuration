@@ -1,6 +1,6 @@
 function ColorMyPencils(color)
-	color = color or "rose-pine-dawn"
-	-- color = color or "nord"
+	-- color = color or "rose-pine-dawn"
+	color = color or "nord"
 	vim.cmd.colorscheme(color)
 
 	-- Make Vim transparent
