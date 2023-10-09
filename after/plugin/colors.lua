@@ -1,11 +1,16 @@
-function ColorMyPencils(color)
-	-- color = color or "rose-pine-dawn"
-	color = color or "nord"
-	vim.cmd.colorscheme(color)
+local vim = vim
 
-	-- Make Vim transparent
-	--	vim.api.nvim_set_hl(0, "Normal", {bg = "none"})
-	--	vim.api.nvim_set_hl(0, "NormalFloat", {bg = "none"})
-end
+vim.cmd.colorscheme("rose-pine")
 
-ColorMyPencils()
+local create_cmd = vim.api.nvim_create_user_command
+
+-- https://gist.github.com/Schniz/5cfc225920486ffa2fb447545b9f6d24#file-toggle-vim
+create_cmd("ToggleBackground", function()
+	if vim.o.background == "dark" then
+		vim.cmd("set bg=light")
+	else
+		vim.cmd("set bg=dark")
+	end
+end, {})
+
+vim.keymap.set("n", "<Leader>tb", ":ToggleBackground<CR>", { noremap = true })

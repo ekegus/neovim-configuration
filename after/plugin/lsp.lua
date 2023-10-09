@@ -28,6 +28,13 @@ local lsp_attach = function(client, bufnr)
 	vim.keymap.set("n", "<leader>df", function()
 		vim.diagnostic.open_float()
 	end, opts)
+	vim.keymap.set("n", "[d", function()
+		vim.diagnostic.goto_prev()
+	end, opts)
+
+	vim.keymap.set("n", "]d", function()
+		vim.diagnostic.goto_next()
+	end, opts)
 
 	vim.keymap.set("n", "<leader>da", vim.lsp.buf.add_workspace_folder, opts)
 	vim.keymap.set("n", "<leader>dr", vim.lsp.buf.remove_workspace_folder, opts)
@@ -37,14 +44,6 @@ local lsp_attach = function(client, bufnr)
 	vim.keymap.set("n", "<leader>fo", function()
 		vim.lsp.buf.format({ async = true })
 	end, opts)
-
-	-- https://github.com/bluz71/vim-nightfly-guicolors
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "single",
-	})
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signatureHelp, {
-		border = "single",
-	})
 end
 
 local lspconfig = require("lspconfig")
@@ -58,4 +57,11 @@ for _, server_name in ipairs(get_servers()) do
 		on_attach = lsp_attach,
 		capabilities = lsp_capabilities,
 	})
+end
+
+local symbols = { Error = "󰅙", Info = "󰋼", Hint = "󰌵", Warn = "" }
+
+for name, icon in pairs(symbols) do
+	local hl = "DiagnosticSign" .. name
+	vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end

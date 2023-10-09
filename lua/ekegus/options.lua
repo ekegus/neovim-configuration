@@ -48,3 +48,6 @@ opt.timeoutlen = 500
 
 opt.splitright = true
 opt.diffopt = "vertical"
+
+-- For neovide
+vim.o.guifont = "Iosevka Nerd Font:h16"

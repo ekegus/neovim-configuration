@@ -58,9 +58,7 @@ return require("packer").startup(function(use)
 
 	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
-	use({ "github/copilot.vim" })
-
-	-- use({ "mbbill/undotree" })
+	-- use({ "github/copilot.vim" })
 
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
@@ -71,7 +69,29 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({ "echasnovski/mini.pairs", branch = "stable" })
+	use({ "folke/noice.nvim", requires = "MunifTanjim/nui.nvim" })
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "nvim-tree/nvim-web-devicons", opt = true },
+	})
+	use({
+		"folke/zen-mode.nvim",
+		opts = {},
+	})
+
+	use({
+		"folke/twilight.nvim",
+		opts = {},
+	})
+
+	use({
+		"folke/todo-comments.nvim",
+		requires = { "nvim-lua/plenary.nvim", opts = {} },
+	})
+
+	use({ "cormacrelf/dark-notify" })
+
+	-- use({ "echasnovski/mini.pairs", branch = "stable" })
 
 	if packer_bootstrap then
 		require("packer").sync()

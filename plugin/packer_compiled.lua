@@ -84,11 +84,6 @@ _G.packer_plugins = {
     path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
-  ["copilot.vim"] = {
-    loaded = true,
-    path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/copilot.vim",
-    url = "https://github.com/github/copilot.vim"
-  },
   ["diffview.nvim"] = {
     loaded = true,
     path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/diffview.nvim",
@@ -110,6 +105,11 @@ _G.packer_plugins = {
     path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/leap.nvim",
     url = "https://github.com/ggandor/leap.nvim"
   },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -120,15 +120,20 @@ _G.packer_plugins = {
     path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  ["mini.pairs"] = {
+  ["noice.nvim"] = {
     loaded = true,
-    path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/mini.pairs",
-    url = "https://github.com/echasnovski/mini.pairs"
+    path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/noice.nvim",
+    url = "https://github.com/folke/noice.nvim"
   },
   ["nord.nvim"] = {
     loaded = true,
     path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/nord.nvim",
     url = "https://github.com/shaunsingh/nord.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -199,6 +204,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/vim-vsnip",
     url = "https://github.com/hrsh7th/vim-vsnip"
+  },
+  ["zen-mode.nvim"] = {
+    loaded = true,
+    path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
+    url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 
