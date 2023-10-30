@@ -50,4 +50,5 @@ opt.splitright = true
 opt.diffopt = "vertical"
 
 -- For neovide
-vim.o.guifont = "Iosevka Nerd Font:h16"
+-- vim.o.guifont = "Iosevka Nerd Font:h16"
+vim.o.guifont = "VictorMono Nerd Font:h15"
