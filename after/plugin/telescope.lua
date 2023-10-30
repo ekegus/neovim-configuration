@@ -1,14 +1,15 @@
 local vim = vim
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
+local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 
 telescope.setup({
 	defaults = {
 		file_ignore_patterns = { "node_modules" },
 		mappings = {
-			i = { ["<c-t>"] = trouble.open_with_trouble },
-			n = { ["<c-t>"] = trouble.open_with_trouble },
+			i = { ["<c-t>"] = trouble.open_with_trouble, ["jk"] = actions.close },
+			n = { ["<c-t>"] = trouble.open_with_trouble, ["jk"] = actions.close },
 		},
 	},
 	pickers = {

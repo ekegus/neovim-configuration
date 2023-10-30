@@ -24,6 +24,40 @@ vim.keymap.set("n", "[b", ":bprevious<CR>", { noremap = true })
 vim.keymap.set("n", "]b", ":bnext<CR>", { noremap = true })
 
 -- -------------------------Terminal-----------------------------
--- vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set("n", "<Leader>te", ":terminal<CR>", { noremap = true })
--- map("n", "<Leader>th", ":split<cr> :terminal<CR>", { noremap = true })
+
+vim.keymap.set("n", "mm", "<S-%>", { noremap = true })
+vim.keymap.set("n", "%", "<Nop>", { noremap = true })
+vim.keymap.set("n", "<S-%>", "<Nop>", { noremap = true })
+vim.keymap.set("i", "jk", "<ESC>", { noremap = true })
+vim.keymap.set("i", "<C-c>", "<Nop>", { noremap = true })
+vim.keymap.set("i", "<ESC>", "<Nop>", { noremap = true })
+vim.keymap.set("n", "0", "<Nop>", { noremap = true })
+
+vim.keymap.set("n", "gl", "<S-$>", { noremap = true })
+vim.keymap.set("n", "$", "<Nop>", { noremap = true })
+vim.keymap.set("n", "gh", "0", { noremap = true })
+vim.keymap.set("n", "gs", "<S-^>", { noremap = true })
+vim.keymap.set("n", "^", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("n", "ge", "G", { noremap = true })
+vim.keymap.set("n", "G", "<Nop>", { noremap = true })
+
+vim.keymap.set("n", "ga", "<C-6>", { noremap = true })
+vim.keymap.set("n", "<C-6>", "<Nop>", { noremap = true })
+
+vim.keymap.set("t", "jk", "<C-\\><C-n>", { noremap = true })
+vim.keymap.set("t", "<C-\\><C-n>", "", { noremap = true })
+
+-- Change next/prev: Doesn't seem to work properly
+-- https://learnvimscriptthehardway.stevelosh.com/chapters/15.html
+vim.keymap.set("o", "in(", ":<c-u>normal! f(vi(<cr>", { noremap = true })
+vim.keymap.set("o", "il(", ":<c-u>normal! F)vi(<cr>", { noremap = true })
+
+vim.keymap.set("o", "in{", ":<c-u>normal! f{vi{<cr>", { noremap = true })
+vim.keymap.set("o", "il{", ":<c-u>normal! F}vi{<cr>", { noremap = true })
+
+vim.keymap.set("o", "in[", ":<c-u>normal! f[vi[<cr>", { noremap = true })
+vim.keymap.set("o", "il[", ":<c-u>normal! F]vi[<cr>", { noremap = true })
+
+vim.keymap.set("o", 'in"', ':<c-u>normal! f"vi"<cr>', { noremap = true })
+vim.keymap.set("o", 'il"', ':<c-u>normal! F"vi"<cr>', { noremap = true })
