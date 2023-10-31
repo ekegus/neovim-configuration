@@ -4,7 +4,8 @@ local vim = vim
 vim.g.mapleader = " "
 vim.keymap.set("n", ";", ":", { noremap = true })
 -- vim.keymap.set("n", "<leader>ev", ":e $MYVIMRC<CR>", { noremap = true })
--- vim.keymap.set("n", "<Leader>ls", ":buffers<CR>:buffer<Space>", { noremap = true }) -- List buffers and open command menu
+-- List buffers and open command menu
+-- vim.keymap.set("n", "<Leader>ls", ":buffers<CR>:buffer<Space>", { noremap = true })
 -- map("", "Q", "<Nop>", { noremap = false }) -- Disable Ex Mode
 
 -- Nop

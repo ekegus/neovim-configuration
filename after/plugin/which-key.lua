@@ -5,6 +5,13 @@ local wk = require("which-key")
 
 local gs = package.loaded.gitsigns
 
+-- Don't like showing which key all the time...
+-- So I disable it in visual mode and when yanking, deleting
+-- https://github.com/folke/which-key.nvim/issues/304
+require("which-key.plugins.presets").operators["v"] = nil
+require("which-key.plugins.presets").operators["y"] = nil
+require("which-key.plugins.presets").operators["d"] = nil
+
 wk.setup({
 	window = {
 		border = "single", -- none, single, double, shadow
@@ -20,6 +27,7 @@ wk.setup({
 		spacing = 3, -- spacing between columns
 		align = "left", -- align columns left, center or right
 	},
+	ignore_missing = true,
 	icons = {
 		breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
 		separator = " ", -- symbol used between a key and it's label
@@ -36,12 +44,11 @@ wk.setup({
 		--             -- ["<cr>"] = "RET",
 		--                 -- ["<tab>"] = "TAB",
 	},
-	triggers_blacklist = {
-		-- list of mode / prefixes that should never be hooked by WhichKey
-		--     -- this is mostly relevant for keymaps that start with a native binding
-		--         i = { "j", "k" },
-		-- v = { "<s-5>", "<s-4>", "<s-6>", "<s-0>", "0", "%", "$", "^" },
-	},
+	-- triggers_blacklist = {
+	-- list of mode / prefixes that should never be hooked by WhichKey
+	--     -- this is mostly relevant for keymaps that start with a native binding
+	--         i = { "j", "k" },
+	-- },
 })
 
 wk.register({
@@ -190,6 +197,10 @@ wk.register({
 		"y<s-$>",
 		"Yank to line end",
 	},
+	["dgl"] = {
+		"d<s-$>",
+		"Delete to line end",
+	},
 	["gh"] = {
 		"0",
 		"Goto line start",
@@ -198,6 +209,10 @@ wk.register({
 	["ygh"] = {
 		"y0",
 		"Yank to line start",
+	},
+	["dgh"] = {
+		"d0",
+		"Delete to line start",
 	},
 	["gs"] = {
 		"<S-^>",
