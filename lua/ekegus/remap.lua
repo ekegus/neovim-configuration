@@ -2,29 +2,30 @@ local vim = vim
 
 -------------------- GENERAL VIM MAPPINGS -------------------------------
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>ve", vim.cmd.Ve)
+-- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>v", vim.cmd.Ve)
 vim.keymap.set("n", ";", ":", { noremap = true })
-vim.keymap.set("n", "<leader>w", vim.cmd.write, { noremap = true })
-vim.keymap.set("n", "<leader>ev", ":e $MYVIMRC<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>/", vim.cmd.nohlsearch, { noremap = true })
-vim.keymap.set("n", "<Leader>ls", ":buffers<CR>:buffer<Space>", { noremap = true }) -- List buffers and open command menu
+-- vim.keymap.set("n", "<leader>w", vim.cmd.write, { noremap = true })
+-- vim.keymap.set("n", "<leader>q", vim.cmd.close, { noremap = true })
+-- vim.keymap.set("n", "<leader>ev", ":e $MYVIMRC<CR>", { noremap = true })
+-- vim.keymap.set("n", "<leader>8", vim.cmd.nohlsearch, { noremap = true })
+-- vim.keymap.set("n", "<Leader>ls", ":buffers<CR>:buffer<Space>", { noremap = true }) -- List buffers and open command menu
 -- map("", "Q", "<Nop>", { noremap = false }) -- Disable Ex Mode
 
-vim.keymap.set("n", "<Leader>cl", ":close<CR>", { noremap = true })
+-- vim.keymap.set("n", "<Leader>cl", ":close<CR>", { noremap = true })
 
-vim.keymap.set("n", "<Leader>vs", ":vsplit<CR>", { noremap = true })
+-- vim.keymap.set("n", "<Leader>vs", ":vsplit<CR>", { noremap = true })
 
-vim.keymap.set("n", "[t", ":tabprevious<CR>", { noremap = true })
-vim.keymap.set("n", "]t", ":tabnext<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>tc", ":tabclose<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>tn", ":tabnew<CR>", { noremap = true })
+-- vim.keymap.set("n", "[t", ":tabprevious<CR>", { noremap = true })
+-- vim.keymap.set("n", "]t", ":tabnext<CR>", { noremap = true })
+-- vim.keymap.set("n", "<Leader>c", ":tabclose<CR>", { noremap = true })
+-- vim.keymap.set("n", "<Leader>n", ":tabnew<CR>", { noremap = true })
 
-vim.keymap.set("n", "[b", ":bprevious<CR>", { noremap = true })
-vim.keymap.set("n", "]b", ":bnext<CR>", { noremap = true })
+-- vim.keymap.set("n", "[b", ":bprevious<CR>", { noremap = true })
+-- vim.keymap.set("n", "]b", ":bnext<CR>", { noremap = true })
 
 -- -------------------------Terminal-----------------------------
-vim.keymap.set("n", "<Leader>te", ":terminal<CR>", { noremap = true })
+-- vim.keymap.set("n", "<Leader>te", ":terminal<CR>", { noremap = true })
 
 -- Some Helix mappings I like
 vim.keymap.set("n", "mm", "<S-%>", { noremap = true })

@@ -59,6 +59,10 @@ return require("packer").startup(function(use)
 
 	use({ "lewis6991/gitsigns.nvim" })
 
+	use({
+		"folke/which-key.nvim",
+	})
+
 	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
 	-- use({ "github/copilot.vim" })

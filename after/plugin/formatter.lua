@@ -41,8 +41,8 @@ require("formatter").setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>F", ":Format<CR>", { silent = true })
-vim.keymap.set("n", "<leader>fo", ":Format<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>F", ":Format<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>fo", ":Format<CR>", { silent = true })
 
 -- Autocommand for formatting on save
 vim.api.nvim_exec(
