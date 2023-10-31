@@ -3,6 +3,8 @@ local builtin = require("telescope.builtin")
 
 local wk = require("which-key")
 
+local gs = package.loaded.gitsigns
+
 wk.setup({
 	window = {
 		border = "single", -- none, single, double, shadow
@@ -30,9 +32,15 @@ wk.setup({
 	key_labels = {
 		-- override the label used to display some keys. It doesn't effect WK in any other way.
 		--     -- For example:
-		["<space>"] = "SPC",
+		-- ["<space>"] = "SPC",
 		--             -- ["<cr>"] = "RET",
 		--                 -- ["<tab>"] = "TAB",
+	},
+	triggers_blacklist = {
+		-- list of mode / prefixes that should never be hooked by WhichKey
+		--     -- this is mostly relevant for keymaps that start with a native binding
+		--         i = { "j", "k" },
+		-- v = { "<s-5>", "<s-4>", "<s-6>", "<s-0>", "0", "%", "$", "^" },
 	},
 })
 
@@ -51,13 +59,13 @@ wk.register({
 	["[b"] = { ":bprevious<cr>", "Previous buffer" },
 	["]b"] = { ":bnext<cr>", "Next buffer" },
 
-	-- LSP
 	["<leader>k"] = {
 		function()
 			vim.lsp.buf.hover()
 		end,
 		"Show docs for item under cursor",
 	},
+	-- LSP
 	["<leader>a"] = {
 		function()
 			vim.lsp.buf.code_action()
@@ -112,6 +120,7 @@ wk.register({
 		builtin.lsp_definitions,
 		"Goto definition",
 	},
+	-- Pickers
 	["<leader>D"] = {
 		builtin.diagnostics,
 		"Open workspace diagnostics picker",
@@ -165,5 +174,106 @@ wk.register({
 	["<leader>'"] = {
 		builtin.resume,
 		"Open previous picker",
+	},
+	-- Some other mappings -- not sure if i like
+	["mm"] = {
+		"<S-%>",
+		"Goto matching bracket",
+		mode = { "n", "v" },
+	},
+	["gl"] = {
+		"<S-$>",
+		"Goto line end",
+		mode = { "n", "v" },
+	},
+	["ygl"] = {
+		"y<s-$>",
+		"Yank to line end",
+	},
+	["gh"] = {
+		"0",
+		"Goto line start",
+		mode = { "n", "v" },
+	},
+	["ygh"] = {
+		"y0",
+		"Yank to line start",
+	},
+	["gs"] = {
+		"<S-^>",
+		"Goto first non-blank in line",
+		mode = { "n", "v" },
+	},
+	["ge"] = {
+		"G",
+		"Goto last line",
+		mode = { "n", "v" },
+	},
+	["ga"] = {
+		"<c-6>",
+		"Goto last accessed file",
+	},
+	-- https://learnvimscriptthehardway.stevelosh.com/chapters/15.html
+	["jk"] = {
+		"<esc>",
+		"Cancel / Escape",
+		mode = { "v", "i", "c" },
+	},
+	["in("] = {
+		":<c-u>normal! f(vi(<cr>",
+		"Change inside next ()",
+		mode = { "o" },
+	},
+	["il("] = {
+		":<c-u>normal! F)vi(<cr>",
+		"Change inside last ()",
+		mode = { "o" },
+	},
+	["in{"] = {
+		":<c-u>normal! f{vi{<cr>",
+		"Change inside next {}",
+		mode = { "o" },
+	},
+	["il{"] = {
+		":<c-u>normal! F}vi{<cr>",
+		"Change inside last {}",
+		mode = { "o" },
+	},
+	["in["] = {
+		":<c-u>normal! f[vi[<cr>",
+		"Change inside next []",
+		mode = { "o" },
+	},
+	["il["] = {
+		":<c-u>normal! F]vi[<cr>",
+		"Change inside last []",
+		mode = { "o" },
+	},
+	['in"'] = {
+		':<c-u>normal! f"vi"<cr>',
+		'Change inside next ""',
+		mode = { "o" },
+	},
+	['il"'] = {
+		':<c-u>normal! F"vi"<cr>',
+		'Change inside last ""',
+		mode = { "o" },
+	},
+	["<leader>y"] = {
+		'"*y',
+		"Yank to system clipboard",
+		mode = { "v" },
+	},
+	["<leader>u"] = {
+		gs.reset_hunk,
+		"Reset hunk",
+	},
+	["]g"] = {
+		gs.next_hunk,
+		"Next hunk",
+	},
+	["[g"] = {
+		gs.prev_hunk,
+		"Previous hunk",
 	},
 })
