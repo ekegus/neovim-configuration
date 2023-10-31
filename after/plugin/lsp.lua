@@ -12,40 +12,6 @@ require("mason-lspconfig").setup({
 	},
 })
 
-local lsp_attach = function(client, bufnr)
-	local opts = { buffer = bufnr }
-	-- vim.keymap.set("n", "<leader>k", function()
-	-- 	vim.lsp.buf.hover()
-	-- end, opts)
-	-- vim.keymap.set("n", "<leader>a", function()
-	-- 	vim.lsp.buf.code_action()
-	-- end, opts)
-	-- vim.keymap.set("n", "<leader>r", function()
-	-- 	vim.lsp.buf.rename()
-	-- end, opts)
-	-- vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, opts)
-
-	-- vim.keymap.set("n", "<leader>d", function()
-	-- 	vim.diagnostic.open_float()
-	-- end, opts)
-	-- vim.keymap.set("n", "[d", function()
-	-- 	vim.diagnostic.goto_prev()
-	-- end, opts)
-
-	-- vim.keymap.set("n", "]d", function()
-	-- 	vim.diagnostic.goto_next()
-	-- end, opts)
-
-	-- vim.keymap.set("n", "<leader>A", vim.lsp.buf.add_workspace_folder, opts)
-	-- vim.keymap.set("n", "<leader>R", vim.lsp.buf.remove_workspace_folder, opts)
-	-- vim.keymap.set("n", "<leader>dl", function()
-	-- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	-- end, opts)
-	-- vim.keymap.set("n", "<leader>fo", function()
-	-- 	vim.lsp.buf.format({ async = true })
-	-- end, opts)
-end
-
 local lspconfig = require("lspconfig")
 
 local get_servers = require("mason-lspconfig").get_installed_servers
@@ -54,7 +20,6 @@ local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 for _, server_name in ipairs(get_servers()) do
 	lspconfig[server_name].setup({
-		on_attach = lsp_attach,
 		capabilities = lsp_capabilities,
 	})
 end
