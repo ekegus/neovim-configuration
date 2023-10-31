@@ -1,6 +1,40 @@
-local wk = require("which-key")
 local vim = vim
 local builtin = require("telescope.builtin")
+
+local wk = require("which-key")
+
+wk.setup({
+	window = {
+		border = "single", -- none, single, double, shadow
+		position = "bottom", -- bottom, top
+		margin = { 1, 0, 1, 0.75 },
+		padding = { 0, 0, 0, 0 }, -- extra window padding [top, right, bottom, left]
+		winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+		zindex = 1000, -- positive value to position WhichKey above other floating windows.
+	},
+	layout = {
+		height = { min = 4, max = 25 }, -- min and max height of the columns
+		width = { min = 20, max = 50 }, -- min and max width of the columns
+		spacing = 3, -- spacing between columns
+		align = "left", -- align columns left, center or right
+	},
+	icons = {
+		breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+		separator = " ", -- symbol used between a key and it's label
+		group = "+", -- symbol prepended to a group
+	},
+	plugins = {
+		marks = false, -- shows a list of your marks on ' and `
+		registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+	},
+	key_labels = {
+		-- override the label used to display some keys. It doesn't effect WK in any other way.
+		--     -- For example:
+		["<space>"] = "SPC",
+		--             -- ["<cr>"] = "RET",
+		--                 -- ["<tab>"] = "TAB",
+	},
+})
 
 wk.register({
 	["<leader>e"] = { vim.cmd.Ex, "Explore" },
@@ -40,7 +74,7 @@ wk.register({
 		function()
 			vim.diagnostic.open_float()
 		end,
-		"Show diagnostic error in floating window",
+		"Show diagnostic error in window",
 	},
 	["[d"] = {
 		function()
