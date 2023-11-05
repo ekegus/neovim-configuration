@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  ["mini.pairs"] = {
-    loaded = true,
-    path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/mini.pairs",
-    url = "https://github.com/echasnovski/mini.pairs"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -194,6 +189,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/vim-vsnip",
     url = "https://github.com/hrsh7th/vim-vsnip"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/Users/ekegus/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 

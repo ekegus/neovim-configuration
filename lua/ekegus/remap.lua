@@ -14,6 +14,7 @@ vim.keymap.set("n", "$", "<Nop>", { noremap = true })
 vim.keymap.set("n", "0", "<Nop>", { noremap = true })
 vim.keymap.set("n", "^", "<Nop>", { noremap = true })
 vim.keymap.set("n", "G", "<Nop>", { noremap = true })
+vim.keymap.set("n", "<ESC>", "<Nop>", { noremap = true })
 
 vim.keymap.set("v", "<s-%>", "<Nop>", { noremap = true })
 vim.keymap.set("v", "%", "<Nop>", { noremap = true })

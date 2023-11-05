@@ -99,7 +99,7 @@ return require("packer").startup(function(use)
 	-- Automatically switch between light and dark themes
 	use({ "cormacrelf/dark-notify" })
 
-	use({ "echasnovski/mini.pairs", branch = "stable" })
+	-- use({ "echasnovski/mini.pairs", branch = "stable" })
 
 	use({
 		"kylechui/nvim-surround",
