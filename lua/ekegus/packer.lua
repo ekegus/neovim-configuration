@@ -35,6 +35,12 @@ return require("packer").startup(function(use)
 	-- use("olivercederborg/poimandres.nvim")
 
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
+	use({
+		"nvim-treesitter/nvim-treesitter-context",
+		config = function()
+			require("nvim-treesitter/nvim-treesitter-context")
+		end,
+	})
 
 	use({
 		"williamboman/mason.nvim",
