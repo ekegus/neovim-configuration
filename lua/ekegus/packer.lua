@@ -27,12 +27,6 @@ return require("packer").startup(function(use)
 		"rose-pine/neovim",
 		as = "rose-pine",
 	})
-	-- use("shaunsingh/nord.nvim")
-	-- use("folke/tokyonight.nvim")
-	-- use("EdenEast/nightfox.nvim")
-	-- use("marko-cerovac/material.nvim")
-
-	-- use("olivercederborg/poimandres.nvim")
 
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 	use({
@@ -75,28 +69,6 @@ return require("packer").startup(function(use)
 
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
-	-- use({
-	-- 	"ggandor/leap.nvim",
-	-- 	config = function()
-	-- 		require("leap").setup({})
-	-- 	end,
-	-- })
-
-	-- use({ "folke/noice.nvim", requires = "MunifTanjim/nui.nvim" })
-	-- use({
-	-- 	"nvim-lualine/lualine.nvim",
-	-- 	requires = { "nvim-tree/nvim-web-devicons", opt = true },
-	-- })
-	-- use({
-	-- 	"folke/zen-mode.nvim",
-	-- 	opts = {},
-	-- })
-
-	-- use({
-	-- 	"folke/twilight.nvim",
-	-- 	opts = {},
-	-- })
-
 	use({
 		"folke/todo-comments.nvim",
 		requires = { "nvim-lua/plenary.nvim", opts = {} },
@@ -117,27 +89,27 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- use({
-	-- "nvim-neorg/neorg",
-	-- config = function()
-	-- 	require("neorg").setup({
-	-- 		load = {
-	-- 			["core.defaults"] = {}, -- Loads default behaviour
-	-- 			["core.concealer"] = {}, -- Adds pretty icons to your documents
-	-- 			["core.dirman"] = { -- Manages Neorg workspaces
-	-- 				config = {
-	-- 					workspaces = {
-	-- 						work = "~/notes/work",
-	-- 						home = "~/notes/home",
-	-- 					},
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 	})
-	-- end,
-	-- run = ":Neorg sync-parsers",
-	-- requires = "nvim-lua/plenary.nvim",
-	-- })
+	use({
+		"nvim-neorg/neorg",
+		config = function()
+			require("neorg").setup({
+				load = {
+					["core.defaults"] = {}, -- Loads default behaviour
+					["core.concealer"] = {}, -- Adds pretty icons to your documents
+					["core.dirman"] = { -- Manages Neorg workspaces
+						config = {
+							workspaces = {
+								work = "~/notes/work",
+								home = "~/notes/home",
+							},
+						},
+					},
+				},
+			})
+		end,
+		run = ":Neorg sync-parsers",
+		requires = "nvim-lua/plenary.nvim",
+	})
 
 	if packer_bootstrap then
 		require("packer").sync()
