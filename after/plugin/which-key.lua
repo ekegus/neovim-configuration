@@ -138,6 +138,7 @@ wk.register({
 			B = { builtin.buffers, "Workspace buffers" },
 			s = { builtin.lsp_document_symbols, "Document symbols" },
 			S = { builtin.lsp_dynamic_workspace_symbols, "Workspace symbols" },
+			c = { builtin.commands, "Commands" },
 			d = {
 				function()
 					return builtin.diagnostics({ bufnr = 0 })
@@ -150,10 +151,22 @@ wk.register({
 		},
 		g = {
 			name = "Git",
-			h = { gs.reset_hunk, "Reset hunk" },
-			b = { gs.reset_buffer, "Reset buffer" },
+			r = {
+				name = "Reset",
+				h = { gs.reset_hunk, "Reset hunk" },
+				b = { gs.reset_buffer, "Reset buffer" },
+			},
+			h = {
+				name = "History",
+				f = { "<cmd>DiffviewFileHistory %<cr>", "File history" },
+				b = { "<cmd>DiffviewFileHistory<cr>", "Branch history" },
+			},
 			p = { gs.prev_hunk, "Previous hunk" },
 			n = { gs.next_hunk, "Next hunk" },
+			d = { "<cmd>DiffviewOpen<cr>", "Open diff view" },
+			c = { "<cmd>DiffviewClose<cr>", "Close diff view" },
+			t = { "<cmd>DiffviewToggleFiles<cr>", "Toggle sidebar" },
+			f = { "<cmd>DiffviewFocusFiles<cr>", "Focus file panel" },
 		},
 		t = {
 			name = "Tabs",
