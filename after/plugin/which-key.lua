@@ -5,12 +5,12 @@ local wk = require("which-key")
 
 local gs = package.loaded.gitsigns
 
--- Don't like showing which key all the time...
--- So I disable it in visual mode and when yanking, deleting
+-- Don't show which key in these modes
 -- https://github.com/folke/which-key.nvim/issues/304
 require("which-key.plugins.presets").operators["v"] = nil
 require("which-key.plugins.presets").operators["y"] = nil
 require("which-key.plugins.presets").operators["d"] = nil
+require("which-key.plugins.presets").operators["c"] = nil
 
 wk.setup({
 	window = {
@@ -52,14 +52,11 @@ wk.setup({
 })
 
 wk.register({
-	["<leader>e"] = { vim.cmd.Ex, "Explore" },
-	["<leader>v"] = { vim.cmd.Ve, "Vexplore" },
 	["<leader>w"] = { vim.cmd.write, "Write" },
-	["<leader>x"] = { vim.cmd.close, "Close" },
-	["<leader>."] = { vim.cmd.nohlsearch, "Remove search highlights" },
-
-	["<leader>c"] = { ":tabclose<cr>", "Close tab" },
-	["<leader>n"] = { ":tabnew<cr>", "New tab" },
+	["<leader>c"] = { vim.cmd.close, "Close" },
+	["<leader>/"] = { vim.cmd.nohlsearch, "Remove search highlights" },
+	["<leader>v"] = { vim.cmd.vsplit, "Split window vertically" },
+	["<leader>s"] = { vim.cmd.split, "Split window" },
 
 	["[t"] = { ":tabprevious<cr>", "Previous tab" },
 	["]t"] = { ":tabnext<cr>", "Next tab" },
@@ -89,7 +86,7 @@ wk.register({
 		function()
 			vim.diagnostic.open_float()
 		end,
-		"Show diagnostic error in window",
+		"Open diagnostic error in float",
 	},
 	["[d"] = {
 		function()
@@ -128,61 +125,57 @@ wk.register({
 		"Goto definition",
 	},
 	-- Pickers
-	["<leader>D"] = {
-		builtin.diagnostics,
-		"Open workspace diagnostics picker",
+	["<leader>"] = {
+		f = {
+			name = "Pickers",
+			f = { builtin.find_files, "Files" },
+			["/"] = { builtin.live_grep, "Live grep" },
+			["?"] = { "<cmd>Telescope<cr>", "Telescope" },
+			r = { builtin.oldfiles, "Recent files" },
+			m = { builtin.git_status, "Modified files" },
+			g = { builtin.git_files, "Git files" },
+			b = { builtin.current_buffer_fuzzy_find, "Current buffer" },
+			B = { builtin.buffers, "Workspace buffers" },
+			s = { builtin.lsp_document_symbols, "Document symbols" },
+			S = { builtin.lsp_dynamic_workspace_symbols, "Workspace symbols" },
+			d = {
+				function()
+					return builtin.diagnostics({ bufnr = 0 })
+				end,
+				"Diagnostics",
+			},
+			D = { builtin.diagnostics, "Workspace diagnostics" },
+			j = { builtin.jumplist, "Jumplist" },
+			["'"] = { builtin.resume, "Previous picker" },
+		},
+		g = {
+			name = "Git",
+			h = { gs.reset_hunk, "Reset hunk" },
+			b = { gs.reset_buffer, "Reset buffer" },
+			p = { gs.prev_hunk, "Previous hunk" },
+			n = { gs.next_hunk, "Next hunk" },
+		},
+		t = {
+			name = "Tabs",
+			c = { "<cmd>tabclose<cr>", "Close Tab" },
+			t = { "<cmd>tabnew<cr>", "New tab" },
+			p = { "<cmd>tabprevious<cr>", "Previous tab" },
+			n = { "<cmd>tabnext<cr>", "Next tab" },
+		},
+		b = {
+			name = "Buffers",
+			d = { "<cmd>bdelete<cr>", "Delete buffer" },
+			p = { "<cmd>bprev<cr>", "Previous buffer" },
+			n = { "<cmd>bnext<cr>", "Next buffer" },
+			m = { "<cmd>bmodified<cr>", "Modified buffer" },
+			l = { "<cmd>ls<cr>", "Buffer list" },
+		},
+		n = {
+			name = "Netrw",
+			e = { "<cmd>Explore<cr>", "Explore" },
+			v = { "<cmd>Vexplore<cr>", "Vexplore" },
+		},
 	},
-	["<leader>d"] = {
-		function()
-			return builtin.diagnostics({ bufnr = 0 })
-		end,
-		"Open diagnostics picker",
-	},
-	["<leader>s"] = {
-		builtin.lsp_document_symbols,
-		"Open symbol picker",
-	},
-	["<leader>S"] = {
-		builtin.lsp_dynamic_workspace_symbols,
-		"Open workspace symbol picker",
-	},
-	["<leader>B"] = {
-		builtin.buffers,
-		"Open workspace buffer picker",
-	},
-	["<leader>b"] = {
-		builtin.current_buffer_fuzzy_find,
-		"Open current buffer picker",
-	},
-	["<leader>?"] = {
-		":Telescope<cr>",
-		"Open Telescope",
-	},
-	["<leader>/"] = {
-		builtin.live_grep,
-		"Open live grep picker",
-	},
-	["<leader>f"] = {
-		builtin.find_files,
-		"Open file picker",
-	},
-	["<leader>m"] = {
-		builtin.git_status,
-		"Open modified files picker",
-	},
-	["<leader>g"] = {
-		builtin.git_files,
-		"Open git files picker",
-	},
-	["<leader>j"] = {
-		builtin.jumplist,
-		"Open jumplist picker",
-	},
-	["<leader>'"] = {
-		builtin.resume,
-		"Open previous picker",
-	},
-	-- Some other mappings -- not sure if i like
 	["mm"] = {
 		"<S-%>",
 		"Goto matching bracket",
@@ -278,10 +271,6 @@ wk.register({
 		'"*y',
 		"Yank to system clipboard",
 		mode = { "v" },
-	},
-	["<leader>u"] = {
-		gs.reset_hunk,
-		"Reset hunk",
 	},
 	["]g"] = {
 		gs.next_hunk,
