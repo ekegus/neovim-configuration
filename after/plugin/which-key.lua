@@ -53,7 +53,7 @@ wk.setup({
 
 wk.register({
 	["<leader>w"] = { vim.cmd.write, "Write" },
-	["<leader>c"] = { vim.cmd.close, "Close" },
+	["<leader>x"] = { vim.cmd.close, "Close" },
 	["<leader>/"] = { vim.cmd.nohlsearch, "Remove search highlights" },
 	["<leader>v"] = { vim.cmd.vsplit, "Split window vertically" },
 	["<leader>s"] = { vim.cmd.split, "Split window" },
@@ -132,14 +132,18 @@ wk.register({
 			["?"] = { "<cmd>Telescope<cr>", "Telescope" },
 			r = { builtin.oldfiles, "Recent files" },
 			m = { builtin.git_status, "Modified files" },
-			g = { builtin.git_files, "Git files" },
 			b = { builtin.current_buffer_fuzzy_find, "Current buffer" },
 			B = { builtin.buffers, "Workspace buffers" },
 			s = { builtin.lsp_document_symbols, "Document symbols" },
 			S = { builtin.lsp_dynamic_workspace_symbols, "Workspace symbols" },
 			[":"] = { builtin.commands, "Commands" },
-			c = { builtin.git_bcommits, "Git commits for buffer" },
-			C = { builtin.git_commits, "Git commits" },
+			c = { "<cmd>TodoTelescope<cr>", "Todo comments" },
+			g = {
+				name = "Git",
+				b = { builtin.git_bcommits, "Buffer commits" },
+				C = { builtin.git_commits, "Workspace commits" },
+				f = { builtin.git_files, "Files" },
+			},
 			d = {
 				function()
 					return builtin.diagnostics({ bufnr = 0 })
@@ -162,25 +166,19 @@ wk.register({
 				f = { "<cmd>DiffviewFileHistory %<cr>", "File history" },
 				b = { "<cmd>DiffviewFileHistory<cr>", "Branch history" },
 			},
-			p = { gs.prev_hunk, "Previous hunk" },
-			n = { gs.next_hunk, "Next hunk" },
 			d = { "<cmd>DiffviewOpen<cr>", "Open diff view" },
-			c = { "<cmd>DiffviewClose<cr>", "Close diff view" },
+			x = { "<cmd>DiffviewClose<cr>", "Close diff view" },
 			t = { "<cmd>DiffviewToggleFiles<cr>", "Toggle sidebar" },
 			f = { "<cmd>DiffviewFocusFiles<cr>", "Focus file panel" },
 		},
 		t = {
 			name = "Tabs",
-			c = { "<cmd>tabclose<cr>", "Close Tab" },
+			x = { "<cmd>tabclose<cr>", "Close Tab" },
 			t = { "<cmd>tabnew<cr>", "New tab" },
-			p = { "<cmd>tabprevious<cr>", "Previous tab" },
-			n = { "<cmd>tabnext<cr>", "Next tab" },
 		},
 		b = {
 			name = "Buffers",
 			d = { "<cmd>bdelete<cr>", "Delete buffer" },
-			p = { "<cmd>bprev<cr>", "Previous buffer" },
-			n = { "<cmd>bnext<cr>", "Next buffer" },
 			m = { "<cmd>bmodified<cr>", "Modified buffer" },
 			l = { "<cmd>ls<cr>", "Buffer list" },
 		},
@@ -195,7 +193,9 @@ wk.register({
 			r = { "<cmd>TroubleToggle lsp_references<cr>", "Symbol references" },
 			d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document diagnostics" },
 			D = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace diagnostics" },
-			c = { "<cmd>TroubleClose<cr>", "LSP references" },
+			x = { "<cmd>TroubleClose<cr>", "Close trouble" },
+			C = { "<cmd>TodoTrouble<cr>", "Todo comments in workspace" },
+			c = { "<cmd>TodoTrouble cwd=.<cr>", "Todo comments in buffer" },
 		},
 	},
 	["mm"] = {
@@ -302,5 +302,16 @@ wk.register({
 		gs.prev_hunk,
 		"Previous hunk",
 	},
-	-- TODO: Do something
+	["]c"] = {
+		function()
+			require("todo-comments").jump_next()
+		end,
+		"Next todo comment",
+	},
+	["[c"] = {
+		function()
+			require("todo-comments").jump_prev()
+		end,
+		"Previous todo comment",
+	},
 })
