@@ -124,7 +124,6 @@ wk.register({
 		builtin.lsp_definitions,
 		"Goto definition",
 	},
-	-- Pickers
 	["<leader>"] = {
 		f = {
 			name = "Pickers",
@@ -145,7 +144,7 @@ wk.register({
 				function()
 					return builtin.diagnostics({ bufnr = 0 })
 				end,
-				"Diagnostics",
+				"Document diagnostics",
 			},
 			D = { builtin.diagnostics, "Workspace diagnostics" },
 			j = { builtin.jumplist, "Jumplist" },
@@ -189,6 +188,14 @@ wk.register({
 			name = "Netrw",
 			e = { "<cmd>Explore<cr>", "Explore" },
 			v = { "<cmd>Vexplore<cr>", "Vexplore" },
+		},
+		l = {
+			name = "Trouble List",
+			t = { "<cmd>TroubleToggle<cr>", "Toggle Trouble" },
+			r = { "<cmd>TroubleToggle lsp_references<cr>", "Symbol references" },
+			d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document diagnostics" },
+			D = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace diagnostics" },
+			c = { "<cmd>TroubleClose<cr>", "LSP references" },
 		},
 	},
 	["mm"] = {
@@ -295,4 +302,5 @@ wk.register({
 		gs.prev_hunk,
 		"Previous hunk",
 	},
+	-- TODO: Do something
 })
