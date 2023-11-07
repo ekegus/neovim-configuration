@@ -138,7 +138,9 @@ wk.register({
 			B = { builtin.buffers, "Workspace buffers" },
 			s = { builtin.lsp_document_symbols, "Document symbols" },
 			S = { builtin.lsp_dynamic_workspace_symbols, "Workspace symbols" },
-			c = { builtin.commands, "Commands" },
+			[":"] = { builtin.commands, "Commands" },
+			c = { builtin.git_bcommits, "Git commits for buffer" },
+			C = { builtin.git_commits, "Git commits" },
 			d = {
 				function()
 					return builtin.diagnostics({ bufnr = 0 })
